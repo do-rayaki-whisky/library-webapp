@@ -12,6 +12,14 @@ class Books extends CI_Controller {
 		$data['content_view'] = 'books/main';
 		$this->load->view('layout/main_layout', $data);
 	}
+
+	public function newbook(){
+		if($this->session->userdata('logged_in')){
+			echo 'Add Book';
+		} else {
+			redirect('books');
+		}
+	}
 }
 
 ?>

@@ -27,7 +27,11 @@
 
 				<div class="col-md-3">
 
-					<h1>Menu Side Bar</h1>
+					<div class="row">
+
+						<?php $this->load->view('menu/login_view'); ?>
+
+					</div>
 
 				</div>
 
