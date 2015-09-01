@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2015 at 10:53 AM
+-- Generation Time: Sep 01, 2015 at 06:56 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `library_webapp`
 --
+CREATE DATABASE IF NOT EXISTS `library_webapp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `library_webapp`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `books`
 --
 
+DROP TABLE IF EXISTS `books`;
 CREATE TABLE IF NOT EXISTS `books` (
   `book_id` int(11) NOT NULL,
   `book_isbn` varchar(100) NOT NULL,
@@ -50,6 +53,7 @@ INSERT INTO `books` (`book_id`, `book_isbn`, `book_name`, `book_writer`, `book_p
 -- Table structure for table `members`
 --
 
+DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
   `member_id` int(11) NOT NULL,
   `member_name` varchar(100) NOT NULL,
@@ -71,6 +75,7 @@ INSERT INTO `members` (`member_id`, `member_name`, `member_surname`) VALUES
 -- Table structure for table `rentals`
 --
 
+DROP TABLE IF EXISTS `rentals`;
 CREATE TABLE IF NOT EXISTS `rentals` (
   `rental_id` int(11) NOT NULL COMMENT 'รหัสยืม',
   `rental_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'วันที่ยืม',
@@ -79,6 +84,27 @@ CREATE TABLE IF NOT EXISTS `rentals` (
   `rental_quantity` int(11) NOT NULL COMMENT 'จำนวน',
   `rental_sendback` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'วันที่ส่งคืน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='การยืม - คืน';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL,
+  `user_username` varchar(100) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  `user_displayname` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_username`, `user_password`, `user_displayname`) VALUES
+(2, 'admin', 'admin', 'Administrator');
 
 --
 -- Indexes for dumped tables
@@ -105,6 +131,12 @@ ALTER TABLE `rentals`
   ADD KEY `member_id` (`member_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -123,6 +155,11 @@ ALTER TABLE `members`
 --
 ALTER TABLE `rentals`
   MODIFY `rental_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสยืม';
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
