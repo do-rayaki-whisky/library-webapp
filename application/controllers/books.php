@@ -15,10 +15,18 @@ class Books extends CI_Controller {
 
 	public function newbook(){
 		if($this->session->userdata('logged_in')){
-			echo 'Add Book';
+			
+			$data['title'] = "เพิ่มรายการหนังสือใหม่";
+			$data['content_view'] = 'books/book_add_view';
+			$this->load->view('layout/main_layout', $data);
+
 		} else {
 			redirect('books');
 		}
+	}
+
+	public function savebook(){
+		echo "Save Book";
 	}
 }
 

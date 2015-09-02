@@ -37,7 +37,6 @@
 
 				<div class="col-md-9">
 
-					<h1>Content</h1>
 					<?php $this->load->view($content_view); ?>
 
 				</div>

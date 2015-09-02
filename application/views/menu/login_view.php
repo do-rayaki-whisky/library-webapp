@@ -1,9 +1,10 @@
 <?php if($this->session->userdata('logged_in')): ?>
 
-<div class="panel panel-success">
+<div class="panel panel-danger">
 	<div class="panel-heading">ข้อมูลผู้ใช้</div>
 	<div class="panel-body">
 		<?php echo "สวัสดี " . $this->session->userdata('displayname'); ?>
+		<?php echo "<br><br>"; ?>
 		<div class="form-group">
 
 			<?php 
@@ -20,6 +21,10 @@
 		</div>
 	</div>
 </div>
+
+<?php $this->load->view('menu/menu_rental_view'); ?>
+
+<?php $this->load->view('menu/menu_adminmenu_view'); ?>
 
 <?php else: ?>
 
