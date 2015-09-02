@@ -20,7 +20,7 @@
 		<div class="container">
 			<div class="row">
 
-				<h1>ระบบงานห้องสมุด</h1>
+				<?php $this->load->view('menu/menu_navbar_view'); ?>
 
 			</div>
 			<div class="row">
@@ -36,6 +36,15 @@
 				</div>
 
 				<div class="col-md-9">
+
+					<?php if($this->session->flashdata('create_book_success')): ?>
+
+						<div class="alert alert-info alert-dismissible" role="alert">
+  							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  							<?php echo $this->session->flashdata('create_book_success'); ?>
+						</div>
+						
+					<?php endif; ?>
 
 					<?php $this->load->view($content_view); ?>
 

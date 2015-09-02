@@ -4,6 +4,18 @@
 
 	<div class="panel-body">
 		
+
+		<?php //if($this->session->flashdata('errors')):?>
+		<?php if(validation_errors()): ?>
+
+			<div class="alert alert-danger alert-dismissible" role="alert">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<?php //echo $this->session->flashdata('errors'); ?>
+  				<?php echo validation_errors(); ?>
+			</div>
+		
+		<?php endif; ?>
+
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<?php
@@ -12,7 +24,7 @@
 				'class' => 'form-horizontal'
 				);
 			?>
-			<?php echo form_open('books/savebook', $attributes); ?>
+			<?php echo form_open('books/newbook', $attributes); ?>
 
 			<div class="form-group">
 				<div class="col-sm-3">
@@ -23,6 +35,7 @@
 					$attributes = array(
 						'class' => 'form-control',
 						'name' => 'bookname',
+						'value' => $bookname,
 						);
 					?>
 					<?php echo form_input($attributes); ?>
@@ -38,6 +51,7 @@
 					$attributes = array(
 						'class' => 'form-control',
 						'name' => 'writer',
+						'value' => $writer,
 						);
 					?>
 					<?php echo form_input($attributes); ?>
@@ -53,6 +67,7 @@
 					$attributes = array(
 						'class' => 'form-control',
 						'name' => 'isbn',
+						'value' => $isbn,
 						);
 					?>
 					<?php echo form_input($attributes); ?>
@@ -68,6 +83,7 @@
 					$attributes = array(
 						'class' => 'form-control',
 						'name' => 'price',
+						'value' => $price,
 						);
 					?>
 					<?php echo form_input($attributes); ?>
@@ -83,6 +99,7 @@
 					$attributes = array(
 						'class' => 'form-control',
 						'name' => 'quantity',
+						'value' => $quantity,
 						);
 					?>
 					<?php echo form_input($attributes); ?>
