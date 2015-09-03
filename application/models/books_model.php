@@ -7,6 +7,14 @@ class Books_model extends CI_model
 		return $query->result();
 	}
 
+	public function get_book_quantity($book_id){
+
+		$this->db->where('book_id', $book_id);
+		$query = $this->db->get('books');
+
+		return $query->row();
+	}
+
 	public function create_book(){
 
 		$data = array(
@@ -23,6 +31,15 @@ class Books_model extends CI_model
 
 		return $insert_data;
 	}
+
+	public function update_book_quantity($book_id, $book_quantity){
+		$data = array('book_quantity'=> $book_quantity);
+		$this->db->where('book_id', $book_id);
+		$this->db->update('books', $data);
+	}
+
+
+
 }
 
 
